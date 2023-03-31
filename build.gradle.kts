@@ -31,15 +31,7 @@ gradlePlugin {
     }
 }
 
-
-
 publishing {
-    repositories {
-        maven {
-            name = "localPluginRepository"
-            url = uri("../local-plugin-repository")
-        }
-    }
     publications.all {
         if (this is DefaultMavenPublication) {
             this.pom {
