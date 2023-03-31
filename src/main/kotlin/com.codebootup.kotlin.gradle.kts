@@ -2,6 +2,7 @@ import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 import org.jetbrains.kotlin.gradle.tasks.KotlinJvmCompile
 
 plugins {
+    id("java")
     id("org.jetbrains.kotlin.jvm")
 }
 
@@ -18,5 +19,11 @@ tasks.named("compileKotlin", KotlinJvmCompile::class){
 tasks.named("compileTestKotlin", KotlinJvmCompile::class){
     compilerOptions{
         jvmTarget.set(JvmTarget.JVM_17)
+    }
+}
+
+java{
+    toolchain{
+        languageVersion.set(JavaLanguageVersion.of(17))
     }
 }
