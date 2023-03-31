@@ -11,6 +11,7 @@ If you wish to use this build script for production use then we recommend three 
    service this quickly.
 3. Fork the project yourself and publish your own internal version of the plugin that you can manipulate at your 
    discretion. 
+
 ```
 plugins {
     id("com.codebootup.kotlin") version "1.0.0"
@@ -19,5 +20,3 @@ plugins {
 | Plugin version | Kotlin version | JVM version  |
 |----------------|----------------|--------------|
 | 1.0.0          | 1.8.0          | 17           |
- 
-
