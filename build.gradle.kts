@@ -31,35 +31,15 @@ gradlePlugin {
     }
 }
 
-publishing {
-    publications.all {
-        if (this is DefaultMavenPublication) {
-            this.pom {
-                pom {
-                    name.set("codebootup gradle")
-                    description.set("Project encapsulating common gradle build scripts to bootstrap application quickly")
-                    url.set("https://github.com/codebootup/gradle")
-                    groupId = "com.codebootup"
-                    licenses {
-                        license {
-                            name.set("The Apache License, Version 2.0")
-                            url.set("http://www.apache.org/licenses/LICENSE-2.0.txt")
-                        }
-                    }
-                    developers {
-                        developer {
-                            id.set("codebootuplee")
-                            name.set("Lee Cooper")
-                            email.set("lee@codebootup.com")
-                        }
-                    }
-                    scm {
-                        connection.set("scm:git:git@github.com:codebootup/gradle.git")
-                        developerConnection.set("scm:git:ssh://github.com:codebootup/gradle.git")
-                        url.set("https://github.com/codebootup/gradle/tree/main")
-                    }
-                }
-            }
-        }
+signing {
+    val signingKey = providers
+        .environmentVariable("GPG_SIGNING_KEY")
+    val signingPassphrase = providers
+        .environmentVariable("GPG_SIGNING_PASSPHRASE")
+    if (signingKey.isPresent && signingPassphrase.isPresent) {
+        useInMemoryPgpKeys(signingKey.get(), signingPassphrase.get())
+        val extension = extensions
+            .getByName("publishing") as PublishingExtension
+        sign(extension.publications)
     }
 }
