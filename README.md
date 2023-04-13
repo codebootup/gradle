@@ -15,9 +15,10 @@ If you wish to use this build script for production use then we recommend three 
 Usage: https://plugins.gradle.org/plugin/com.codebootup.kotlin 
 ```
 plugins {
-    id("com.codebootup.kotlin") version "1.0.0"
+    id("com.codebootup.kotlin") version "1.0.1"
 }
 ```
-| Plugin version | Kotlin version | JVM version  |
-|----------------|----------------|--------------|
-| 1.0.0          | 1.8.0          | 17           |
+| Plugin version | Kotlin version | JVM version | JUnit |
+|----------------|----------------|-------------|-------|
+| 1.0.0          | 1.8.0          | 17          | 4     |    
+| 1.0.1          | 1.8.0          | 17          | 5     |
