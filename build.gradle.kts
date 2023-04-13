@@ -8,7 +8,7 @@ plugins {
 }
 
 group "com.codebootup.gradle"
-version = (project.properties["buildVersion"] ?: "1.0.0-SNAPSHOT")
+version = (project.properties["buildVersion"] ?: "1.0.1")
 
 repositories {
     mavenCentral()
@@ -28,19 +28,6 @@ gradlePlugin {
             description = "Plugin that encapsulates a common Kotlin build script"
             tags.set(listOf("build"))
         }
-    }
-}
-
-signing {
-    val signingKey = providers
-        .environmentVariable("GPG_SIGNING_KEY")
-    val signingPassphrase = providers
-        .environmentVariable("GPG_SIGNING_PASSPHRASE")
-    if (signingKey.isPresent && signingPassphrase.isPresent) {
-        useInMemoryPgpKeys(signingKey.get(), signingPassphrase.get())
-        val extension = extensions
-            .getByName("publishing") as PublishingExtension
-        sign(extension.publications)
     }
 }
 
