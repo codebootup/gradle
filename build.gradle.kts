@@ -19,19 +19,6 @@ dependencies {
     implementation("org.jetbrains.kotlin:kotlin-gradle-plugin:1.8.0")
 }
 
-signing {
-    val signingKey = providers
-        .environmentVariable("GPG_SIGNING_KEY")
-    val signingPassphrase = providers
-        .environmentVariable("GPG_SIGNING_PASSPHRASE")
-    if (signingKey.isPresent && signingPassphrase.isPresent) {
-        useInMemoryPgpKeys(signingKey.get(), signingPassphrase.get())
-        val extension = extensions
-            .getByName("publishing") as PublishingExtension
-        sign(extension.publications)
-    }
-}
-
 gradlePlugin {
     website.set("https://github.com/codebootup")
     vcsUrl.set("https://github.com/codebootup/gradle.git")
