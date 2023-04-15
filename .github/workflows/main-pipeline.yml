@@ -17,9 +17,10 @@ jobs:
           GPG_PRIVATE_KEY: ${{ secrets.GPG_SIGNING_KEY }}
           PASSPHRASE: ${{ secrets.GPG_SIGNING_PASSPHRASE }}
       - name: Export keys
-        run: | 
+        run: |
+          gpg -K          
           export GPG_TTY=$(tty)
-          gpg --export-secret-key DB6F0F61 > ~/secring.gpg
+          gpg --export-secret-key DB6F0F61 > secring.gpg
       - name: Restore gradle.properties
         env:
           GRADLE_PROPERTIES: ${{ secrets.GRADLE_PROPERTIES }}
