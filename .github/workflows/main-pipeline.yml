@@ -20,7 +20,7 @@ jobs:
         run: |
           gpg -K          
           export GPG_TTY=$(tty)
-          gpg --export-secret-key DB6F0F61 > secring.gpg
+          gpg --homedir /home/runner/.gnupg --export-secret-key DB6F0F61 > secring.gpg
       - name: Restore gradle.properties
         env:
           GRADLE_PROPERTIES: ${{ secrets.GRADLE_PROPERTIES }}
