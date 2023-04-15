@@ -16,8 +16,8 @@ jobs:
         env:
           GPG_PRIVATE_KEY: ${{ secrets.GPG_SIGNING_KEY }}
           PASSPHRASE: ${{ secrets.GPG_SIGNING_PASSPHRASE }}
-      - name: List keys
-        run: gpg -K
+      - name: Export keys
+        run: gpg --keyring secring.gpg --export-secret-keys > ~/.gnupg/secring.gpg
       - name: Restore gradle.properties
         env:
           GRADLE_PROPERTIES: ${{ secrets.GRADLE_PROPERTIES }}
