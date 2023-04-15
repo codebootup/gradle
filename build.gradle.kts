@@ -37,8 +37,10 @@ signing {
     val signingPassphrase = providers
         .environmentVariable("GPG_SIGNING_PASSPHRASE")
     if (signingKey.isPresent && signingPassphrase.isPresent) {
+        println("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
         useInMemoryPgpKeys(signingKey.get(), signingPassphrase.get())
         publishing.publications.filterIsInstance<DefaultMavenPublication>().forEach{
+            println("YYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYY")
             sign(it)
         }
     }
