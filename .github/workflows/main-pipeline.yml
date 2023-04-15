@@ -11,24 +11,6 @@ jobs:
       checks: write
       pull-requests: write
     steps:
-      - name: Import GPG Key
-        uses: crazy-max/ghaction-import-gpg@v1
-        env:
-          GPG_PRIVATE_KEY: ${{ secrets.GPG_SIGNING_KEY }}
-          PASSPHRASE: ${{ secrets.GPG_SIGNING_PASSPHRASE }}
-      - name: Export keys
-        run: |
-          gpg -K          
-          export GPG_TTY=$(tty)
-          gpg --homedir /home/runner/.gnupg --export-secret-key DB6F0F61 > secring.gpg
-      - name: Restore gradle.properties
-        env:
-          GRADLE_PROPERTIES: ${{ secrets.GRADLE_PROPERTIES }}
-        shell: bash
-        run: |
-          mkdir -p ~/.gradle/
-          echo "GRADLE_USER_HOME=${HOME}/.gradle" >> $GITHUB_ENV
-          echo "${GRADLE_PROPERTIES}" > ~/.gradle/gradle.properties-
       - uses: actions/checkout@v3
       - name: Set up JDK 17
         uses: actions/setup-java@v3
@@ -38,4 +20,4 @@ jobs:
       - name: Setup Gradle
         uses: gradle/gradle-build-action@v2
         with:
-          arguments: build
+          arguments: build publishPlugins --info --debug

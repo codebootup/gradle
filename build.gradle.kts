@@ -31,6 +31,19 @@ gradlePlugin {
     }
 }
 
+signing {
+    val signingKey = providers
+        .environmentVariable("GPG_SIGNING_KEY")
+    val signingPassphrase = providers
+        .environmentVariable("GPG_SIGNING_PASSPHRASE")
+    if (signingKey.isPresent && signingPassphrase.isPresent) {
+        useInMemoryPgpKeys(signingKey.get(), signingPassphrase.get())
+        publishing.publications.filterIsInstance<DefaultMavenPublication>().forEach{
+            sign(it)
+        }
+    }
+}
+
 publishing {
     publications.all {
         if (this is DefaultMavenPublication) {
