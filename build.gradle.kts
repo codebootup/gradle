@@ -36,6 +36,7 @@ signing {
         .environmentVariable("GPG_SIGNING_KEY")
     val signingPassphrase = providers
         .environmentVariable("GPG_SIGNING_PASSPHRASE")
+    println("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA")
     if (signingKey.isPresent && signingPassphrase.isPresent) {
         println("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
         useInMemoryPgpKeys(signingKey.get(), signingPassphrase.get())
