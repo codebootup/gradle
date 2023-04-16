@@ -7,6 +7,8 @@ on:
 env:
   GPG_SIGNING_KEY: ${{ secrets.GPG_SIGNING_KEY }}
   GPG_SIGNING_PASSPHRASE: ${{ secrets.GPG_SIGNING_PASSPHRASE }}
+  GRADLE_API_KEY: ${{ secrets.GRADLE_API_KEY }}
+  GRADLE_API_SECRET: ${{ secrets.GRADLE_API_SECRET }}
 
 jobs:
   build:
@@ -24,4 +26,4 @@ jobs:
       - name: Setup Gradle
         uses: gradle/gradle-build-action@v2
         with:
-          arguments: build publishPlugins --info
+          arguments: build -Pgradle.publish.key=${GRADLE_API_KEY} -Pgradle.publish.secret=${GRADLE_API_SECRET} publishPlugins --info
