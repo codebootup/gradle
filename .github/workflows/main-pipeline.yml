@@ -25,5 +25,5 @@ jobs:
           distribution: 'temurin'
       - name: Setup Gradle
         uses: gradle/gradle-build-action@v2
-        with:
-          arguments: build -Pgradle.publish.key=${GRADLE_API_KEY} -Pgradle.publish.secret=${GRADLE_API_SECRET} publishPlugins --info
+      - run: |
+          ./gradlew build -Pgradle.publish.key=${GRADLE_API_KEY} -Pgradle.publish.secret=${GRADLE_API_SECRET} publishPlugins --info
