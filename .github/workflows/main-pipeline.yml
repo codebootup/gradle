@@ -20,4 +20,4 @@ jobs:
       - name: Setup Gradle
         uses: gradle/gradle-build-action@v2
         with:
-          arguments: build publishPlugins --info
+          arguments: build -PGPG_SIGNING_KEY=${GPG_SIGNING_KEY} -PGPG_SIGNING_PASSPHRASE=${GPG_SIGNING_PASSPHRASE} publishPlugins --info
