@@ -26,4 +26,4 @@ jobs:
       - name: Setup Gradle
         uses: gradle/gradle-build-action@v2
       - run: |
-          ./gradlew build -Pgradle.publish.key=${GRADLE_API_KEY} -Pgradle.publish.secret=${GRADLE_API_SECRET} publishPlugins --info
+          ./gradlew build
