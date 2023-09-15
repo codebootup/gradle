@@ -8,7 +8,7 @@ plugins {
 }
 
 group "com.codebootup.gradle"
-version = (project.properties["buildVersion"] ?: "1.0.2")
+version = (project.properties["buildVersion"] ?: "2.0.0")
 
 repositories {
     mavenCentral()

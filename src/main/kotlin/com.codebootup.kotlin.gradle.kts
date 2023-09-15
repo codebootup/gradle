@@ -12,19 +12,19 @@ dependencies{
 
 tasks.named("compileKotlin", KotlinJvmCompile::class){
     compilerOptions{
-        jvmTarget.set(JvmTarget.JVM_17)
+        jvmTarget.set(JvmTarget.JVM_19)
     }
 }
 
 tasks.named("compileTestKotlin", KotlinJvmCompile::class){
     compilerOptions{
-        jvmTarget.set(JvmTarget.JVM_17)
+        jvmTarget.set(JvmTarget.JVM_19)
     }
 }
 
 java{
     toolchain{
-        languageVersion.set(JavaLanguageVersion.of(17))
+        languageVersion.set(JavaLanguageVersion.of(19))
     }
 }
 
