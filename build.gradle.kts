@@ -8,15 +8,15 @@ plugins {
 }
 
 group "com.codebootup.gradle"
-version = (project.properties["buildVersion"] ?: "2.0.0")
+version = (project.properties["buildVersion"] ?: "3.0.0")
 
 repositories {
     mavenCentral()
 }
 
 dependencies {
-    implementation("org.jetbrains.kotlin:kotlin-allopen:1.9.10")
-    implementation("org.jetbrains.kotlin:kotlin-gradle-plugin:1.9.10")
+    implementation("org.jetbrains.kotlin:kotlin-allopen:1.9.22")
+    implementation("org.jetbrains.kotlin:kotlin-gradle-plugin:1.9.22")
 }
 
 gradlePlugin {
